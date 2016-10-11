@@ -34,7 +34,7 @@ address=/{{ $host }}.{{ $network.Name }}.{{ $tld }}/{{ $network.IP }}
     {{ template "host" (dict "Container" $container "Host" $container.Name "Tld" $tld) }}
 {{ end }}
 
-{{ range $host, $containers := groupByMulti $ "Env.DOMAIN_NAME" "," }}
+{{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
     {{ range $index, $container := $containers }}
         {{ template "host" (dict "Container" $container "Host" (print $host) "Tld" "") }}
     {{ end }}
